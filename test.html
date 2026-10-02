@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Тест: Разложение числа на простые множители</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px 40px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+        border-bottom: 3px solid #764ba2;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+    .question {
+        background: #f8f9fc;
+        border-left: 5px solid #667eea;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+    .question:hover {
+        background: #eef1f9;
+    }
+    .question p {
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0 0 12px 0;
+        font-size: 16px;
+    }
+    label {
+        display: block;
+        padding: 8px 12px;
+        margin: 5px 0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #444;
+    }
+    label:hover {
+        background: #dde3f0;
+    }
+    input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        accent-color: #764ba2;
+    }
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(118,75,162,0.4);
+    }
+    .btn:active {
+        transform: translateY(0);
+    }
+    .result {
+        display: none;
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .result.show {
+        display: block;
+    }
+    .result.good {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #28a745;
+    }
+    .result.bad {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #dc3545;
+    }
+    .correct-answer {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #856404;
+        font-weight: normal;
+    }
+    .correct-answer.show {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>🧮 Тест: Разложение числа на простые множители</h1>
+    <form id="quizForm">
+
+        <div class="question" data-q="1">
+            <p>1. Какое из чисел является простым?</p>
+            <label><input type="radio" name="q1" value="a"> а) 152</label>
+            <label><input type="radio" name="q1" value="b"> б) 169</label>
+            <label><input type="radio" name="q1" value="c"> в) 187</label>
+            <label><input type="radio" name="q1" value="d"> г) 191</label>
+            <div class="correct-answer">Правильный ответ: <b>г) 191</b>. Остальные числа составные: 152 — чётное, 169 = 13·13, 187 = 11·17.</div>
+        </div>
+
+        <div class="question" data-q="2">
+            <p>2. Какое из чисел является составным?</p>
+            <label><input type="radio" name="q2" value="a"> а) 499</label>
+            <label><input type="radio" name="q2" value="b"> б) 570</label>
+            <label><input type="radio" name="q2" value="c"> в) 937</label>
+            <label><input type="radio" name="q2" value="d"> г) 627</label>
+            <div class="correct-answer">Правильный ответ: <b>б) 570</b>. Оно чётное и делится на 5. Остальные — простые числа.</div>
+        </div>
+
+        <div class="question" data-q="3">
+            <p>3. Может ли произведение двух простых чисел быть простым числом?</p>
+            <label><input type="radio" name="q3" value="a"> а) Да, всегда</label>
+            <label><input type="radio" name="q3" value="b"> б) Да, если числа одинаковые</label>
+            <label><input type="radio" name="q3" value="c"> в) Нет, никогда</label>
+            <label><input type="radio" name="q3" value="d"> г) Да, если одно из чисел равно 1</label>
+            <div class="correct-answer">Правильный ответ: <b>в) Нет, никогда</b>. Произведение двух простых чисел всегда имеет как минимум 4 делителя.</div>
+        </div>
+
+        <div class="question" data-q="4">
+            <p>4. Разложите число 44 на простые множители.</p>
+            <label><input type="radio" name="q4" value="a"> а) 4 · 11</label>
+            <label><input type="radio" name="q4" value="b"> б) 2 · 2 · 11</label>
+            <label><input type="radio" name="q4" value="c"> в) 2 · 22</label>
+            <label><input type="radio" name="q4" value="d"> г) 44 — простое число</label>
+            <div class="correct-answer">Правильный ответ: <b>б) 2 · 2 · 11</b>. Число 4 — составное, его нужно разложить дальше.</div>
+        </div>
+
+        <div class="question" data-q="5">
+            <p>5. Разложите число 98 на простые множители.</p>
+            <label><input type="radio" name="q5" value="a"> а) 2 · 7 · 7</label>
+            <label><input type="radio" name="q5" value="b"> б) 2 · 49</label>
+            <label><input type="radio" name="q5" value="c"> в) 7 · 14</label>
+            <label><input type="radio" name="q5" value="d"> г) 2 · 2 · 7</label>
+            <div class="correct-answer">Правильный ответ: <b>а) 2 · 7 · 7</b>. Число 98 = 2 · 49 = 2 · 7 · 7.</div>
+        </div>
+
+        <div class="question" data-q="6">
+            <p>6. Сколько делителей имеет число 120?</p>
+            <label><input type="radio" name="q6" value="a"> а) 8</label>
+            <label><input type="radio" name="q6" value="b"> б) 12</label>
+            <label><input type="radio" name="q6" value="c"> в) 16</label>
+            <label><input type="radio" name="q6" value="d"> г) 20</label>
+            <div class="correct-answer">Правильный ответ: <b>в) 16</b>. Делители: 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120.</div>
+        </div>
+
+        <div class="question" data-q="7">
+            <p>7. Делится ли число n на число m нацело, если n = 2·2·3·3·5·7·7, m = 2·2·7?</p>
+            <label><input type="radio" name="q7" value="a"> а) Делится</label>
+            <label><input type="radio" name="q7" value="b"> б) Не делится</label>
+            <label><input type="radio" name="q7" value="c"> в) Делится, но с остатком</label>
+            <label><input type="radio" name="q7" value="d"> г) Невозможно определить</label>
+            <div class="correct-answer">Правильный ответ: <b>а) Делится</b>. В числе n есть все множители числа m: две двойки и семёрка.</div>
+        </div>
+
+        <div class="question" data-q="8">
+            <p>8. Число 1085 является составным. Как это доказать?</p>
+            <label><input type="radio" name="q8" value="a"> а) Оно чётное</label>
+            <label><input type="radio" name="q8" value="b"> б) Оно делится на 5 (оканчивается на 5)</label>
+            <label><input type="radio" name="q8" value="c"> в) Сумма его цифр делится на 3</label>
+            <label><input type="radio" name="q8" value="d"> г) Оно делится на 7</label>
+            <div class="correct-answer">Правильный ответ: <b>б) Оно делится на 5</b>. Число оканчивается на 5, значит, имеет делитель кроме 1 и самого себя.</div>
+        </div>
+
+        <div class="question" data-q="9">
+            <p>9. Все ли чётные числа являются составными?</p>
+            <label><input type="radio" name="q9" value="a"> а) Да</label>
+            <label><input type="radio" name="q9" value="b"> б) Нет, так как 2 — чётное и простое</label>
+            <label><input type="radio" name="q9" value="c"> в) Нет, так как 4 — чётное и простое</label>
+            <label><input type="radio" name="q9" value="d"> г) Да, кроме 0</label>
+            <div class="correct-answer">Правильный ответ: <b>б) Нет, так как 2 — чётное и простое</b>. Число 2 — единственное чётное простое число.</div>
+        </div>
+
+        <div class="question" data-q="10">
+            <p>10. Каким числом может быть выражена площадь квадрата, если его сторона выражена натуральным числом?</p>
+            <label><input type="radio" name="q10" value="a"> а) Простым числом</label>
+            <label><input type="radio" name="q10" value="b"> б) Составным числом</label>
+            <label><input type="radio" name="q10" value="c"> в) Может быть любым</label>
+            <label><input type="radio" name="q10" value="d"> г) Только чётным</label>
+            <div class="correct-answer">Правильный ответ: <b>б) Составным числом</b>. Площадь = a·a. Если a > 1, число имеет делители 1, a и a².</div>
+        </div>
+
+        <button type="button" class="btn" onclick="checkAnswers()">Проверить результат</button>
+
+        <div id="result" class="result"></div>
+    </form>
+</div>
+
+<script>
+    const correctAnswers = {
+        q1: 'd',
+        q2: 'b',
+        q3: 'c',
+        q4: 'b',
+        q5: 'a',
+        q6: 'c',
+        q7: 'a',
+        q8: 'b',
+        q9: 'b',
+        q10: 'b'
+    };
+
+    function checkAnswers() {
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        document.querySelectorAll('.correct-answer').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('label').forEach(el => {
+            el.style.background = '';
+            el.style.color = '';
+        });
+
+        for (let key in correctAnswers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            const correct = correctAnswers[key];
+            const correctLabel = document.querySelector(`input[name="${key}"][value="${correct}"]`).parentElement;
+
+            if (selected) {
+                if (selected.value === correct) {
+                    score++;
+                    selected.parentElement.style.background = '#d4edda';
+                    selected.parentElement.style.color = '#155724';
+                } else {
+                    selected.parentElement.style.background = '#f8d7da';
+                    selected.parentElement.style.color = '#721c24';
+                    correctLabel.style.background = '#d4edda';
+                    correctLabel.style.color = '#155724';
+                    document.querySelector(`.question[data-q="${key.slice(1)}"] .correct-answer`).classList.add('show');
+                }
+            } else {
+                correctLabel.style.background = '#d4edda';
+                correctLabel.style.color = '#155724';
+                document.querySelector(`.question[data-q="${key.slice(1)}"] .correct-answer`).classList.add('show');
+            }
+        }
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.classList.add('show');
+        resultDiv.className = 'result show';
+
+        if (score === total) {
+            resultDiv.classList.add('good');
+            resultDiv.innerHTML = `🎉 Отлично! Вы ответили правильно на все ${total} вопросов!`;
+        } else if (score >= total * 0.7) {
+            resultDiv.classList.add('good');
+            resultDiv.innerHTML = `👍 Хороший результат! Правильных ответов: ${score} из ${total}.`;
+        } else {
+            resultDiv.classList.add('bad');
+            resultDiv.innerHTML = `📚 Стоит повторить тему. Правильных ответов: ${score} из ${total}. Посмотрите правильные ответы ниже.`;
+        }
+
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+</script>
+</body>
+</html>
